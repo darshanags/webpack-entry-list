@@ -1,0 +1,27 @@
+{
+	"name": "webpack-entry-list",
+	"version": "0.1.0",
+	"description": "Generate an Entry Point Object for Webpack",
+	"main": "weback.entrylist.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/darshanags/webpack-entry-list.git"
+	},
+	"keywords": [
+		"webpack",
+		"webpack4",
+		"entry",
+		"entrylist",
+		"list",
+		"js"
+	],
+	"author": "Darshana Siriwardana",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/darshanags/webpack-entry-list/issues"
+	},
+	"homepage": "https://github.com/darshanags/webpack-entry-list#readme"
+}
