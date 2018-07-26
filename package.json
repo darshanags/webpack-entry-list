@@ -2,7 +2,7 @@
 	"name": "webpack-entry-list",
 	"version": "0.1.1",
 	"description": "Generate an Entry Point Object for Webpack",
-	"main": "weback.entrylist.js",
+	"main": "webpack.entrylist.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
