@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 function genEntryList(dPath, ext) {
-	const dirPath = path.join(__dirname, dPath);
+	const dirPath = dPath;
 	const files = fs.readdirSync(dirPath);
 
 	const fileExt = ext;
