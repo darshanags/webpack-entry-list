@@ -1,6 +1,6 @@
 {
 	"name": "webpack-entry-list",
-	"version": "0.1.2",
+	"version": "1.0.0",
 	"description": "Generate an Entry Point Object for Webpack",
 	"main": "webpack.entrylist.js",
 	"scripts": {
