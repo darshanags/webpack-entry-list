@@ -16,6 +16,7 @@ There are two static methods, __generateEntryList__ and __generateHTMLPluginList
 ### generateEntryList(directoryPath[,fileExtension])
 
 *directoryPath*: Relative path to a directory.
+
 *fileExtension*: Extension of files to be used as entry points. Defaults to __.js__.
 
 ```js
@@ -35,7 +36,9 @@ module.exports = config;
 ### generateHTMLPluginList(directoryPath[,fileExtension, HTMLWebpackPluginOptions])
 
 *directoryPath*: Relative path to a directory.
+
 *fileExtension*: Extension of files to be used as entry points. Defaults to __.pug__.
+
 *HTMLWebpackPluginOptions*: HTMLWebpackPlugin [options object](https://github.com/jantimon/html-webpack-plugin#options). Defaults to __{ inject: true }__.
 
 ```js
