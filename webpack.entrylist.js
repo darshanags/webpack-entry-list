@@ -1,28 +1,73 @@
-const fs = require('fs');
-const path = require('path');
+const { readdirSync } = require('fs');
+const { basename, extname, resolve } = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-function genEntryList(dPath, ext) {
-	const dirPath = dPath;
-	const files = fs.readdirSync(dirPath);
+class WebpackEntryList {
+	static generateEntryList(dPath = '', ext = '.js') {
+		const dir = dPath;
+		let entries = {};
+		let filePath = '';
+		let entryName = '';
+		let files = this._fileList(dir);
 
-	const fileExt = ext;
+		for (let file of files) {
+			filePath = resolve(dir, file);
+			entryName = basename(file, ext);
 
-	let entries = {};
-	let filePath = '';
-	let entryName = '';
-
-	for (let file of files) {
-		filePath = path.join(dirPath, file);
-		entryName = path.basename(file, fileExt);
-
-		if (path.extname(file) == fileExt) {
-			entries[entryName] = filePath;
-		} else {
-			continue;
+			if (extname(file) == ext) {
+				entries[entryName] = filePath;
+			} else {
+				continue;
+			}
 		}
+
+		return entries;
 	}
 
-	return entries;
+	static generateHTMLPluginList(dPath = '', extension = '.pug', htmlWPOptions = { inject: true }) {
+		const dir = dPath;
+		const ext = extension;
+		let files = this._fileList(dir);
+		let plugins = [];
+		let entryName = '';
+		let filePath = '';
+		let config;
+
+		for (let file of files) {
+			filePath = resolve(dir, file);
+			entryName = basename(file, ext);
+
+			if (extname(file) == ext) {
+				config = Object.assign({
+					filename: `${entryName}.html`,
+					template: `${filePath}`
+				}, htmlWPOptions);
+
+				plugins.push(new HtmlWebpackPlugin(config));
+			} else {
+				continue;
+			}
+		}
+
+		return plugins;
+
+	}
+
+	static _fileList(dPath = '') {
+		let files;
+
+		if (dPath === '') {
+			throw 'Directory path cannot be empty.';
+		}
+
+		try {
+			files = readdirSync(dPath);
+		} catch (err) {
+			throw `An error occurred while trying to read the input directory: ${err}.`;
+		}
+
+		return files;
+	}
 }
 
-module.exports = genEntryList;
+module.exports = WebpackEntryList;
